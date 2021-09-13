@@ -13,10 +13,18 @@ class App extends Component {
     showForm:false,
   };
 
-  async componentDidMount () {
-    console.log("mounted")
-  }
-  
+  async componentDidMount() {
+    console.log("mounted");
+  };
+
+  componentDidUpdate() {
+    console.log('updated');
+  };
+
+  componentWillUnmount() {
+    console.log('unmounted');
+  };
+
   toggleForm = () => this.setState({ showForm: !this.state.showForm, })
 
   getId = () => {
@@ -30,22 +38,34 @@ class App extends Component {
     });
   };
 
+  updateSong = (song) => {
+    let updateSongs = this.state.songs.map((s) =>
+    s.id === song.id ? song : s
+    );
+    this.setState({
+      songs: updateSongs,
+    });
+  };
+
   removeSong = (id) => {
     const songs = this.state.songs.filter( (song) => {
       if (song.id !== id)
       return song
-  });
+    });
     this.setState({ songs: [...songs], });
-};
+  };
 
   render() {
-    const { showForm, } = this.state;
+    const { showForm } = this.state;
     return (
       <div style={{marginTop:"35px"}}>
         <Container>
           <Header as='h1'>Music List</Header>
           <Segment raised>
-            <Songs songs={this.state.songs} remove={this.removeSong}/>
+            <Songs 
+              songs={this.state.songs} 
+              remove={this.removeSong}
+              update={this.updateSong} />
             <Button icon color="teal" onClick={this.toggleForm}>
               <Icon name={showForm ? 'angle double up' : 'angle double down' } />
             </Button>
