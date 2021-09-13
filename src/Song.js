@@ -5,8 +5,8 @@ const Song = ( {id, name, artist, remove} ) => (
   
   
   <Table.Row key={id}>
-    <Table.Cell>{name}</Table.Cell>
-    <Table.Cell>{artist}</Table.Cell>
+    <Table.Cell><strong>{name}</strong></Table.Cell>
+    <Table.Cell><strong>{artist}</strong></Table.Cell>
     <Table.Cell>
       <Button size="small" onClick={()=> remove(id)}>
           Delete
