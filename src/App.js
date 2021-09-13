@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Container, Header } from 'semantic-ui-react';
+import Songs from './Songs';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  state = { 
+    songs: [
+      { id: 1, name: "Cherry Tree Lane", artist: "Red Brandy", },
+      { id: 2, name: "Lovin' Arms", artist: "Grady Shepherd", },
+      { id: 3, name: "Dirt Roads", artist: "Chandra Keen", },
+    ],
+  };
+
+  removeSong = (id) => {
+    const songs = this.state.songs.filter( song => {
+      if (song.id !== id)
+      return song
+  });
+    this.setState({ songs: [...songs], });
+}
+
+  render() {
+    return (
+      <div  style={{marginTop:"35px"}}>
+        <Container>
+          <Header as='h1'>Music List</Header>
+          <Songs songs={this.state.songs} remove={this.removeSong}/>
+      </ Container>
+      </div>
+    );
+  }
 }
 
 export default App;

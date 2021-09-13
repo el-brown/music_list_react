@@ -3,7 +3,7 @@ import { Button, Table } from 'semantic-ui-react';
 import Song from './Song';
 
 
-const Songs = ( {songs} ) => (
+const Songs = ( {songs, remove} ) => (
   <Table celled padded color="purple" inverted>
     <Table.Header>
       <Table.Row>
@@ -15,7 +15,7 @@ const Songs = ( {songs} ) => (
 
     <Table.Body>
       {songs.map((song) => (
-        <Song {...song} />
+        <Song {...song} remove={remove}/>
         ))
       }
     </Table.Body>
