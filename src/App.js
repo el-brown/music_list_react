@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header } from 'semantic-ui-react';
+import SongForm from './SongForm';
 import Songs from './Songs';
 
 
@@ -22,10 +23,13 @@ class App extends Component {
 
   render() {
     return (
-      <div  style={{marginTop:"35px"}}>
+      <div style={{marginTop:"35px"}}>
         <Container>
           <Header as='h1'>Music List</Header>
           <Songs songs={this.state.songs} remove={this.removeSong}/>
+          <div style={{marginTop:"35px"}}>
+            <SongForm />
+          </div>
       </ Container>
       </div>
     );
