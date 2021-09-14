@@ -3,6 +3,7 @@ import { Container, Header, Button, Icon, Segment, } from 'semantic-ui-react';
 import SongForm from './SongForm';
 import Songs from './Songs';
 import styled, { keyframes } from "styled-components";
+import { FunButton } from './FunButton';
 
 class App extends Component {
   state = { 
@@ -60,7 +61,7 @@ class App extends Component {
     const { showForm } = this.state;
     return (
       <Content>
-        <div style={{marginTop:"44px"}}>
+        <div style={{marginTop:"60px"}}>
           <Container>
             <HeaderText>Music List</HeaderText>
             <Segment raised>
@@ -68,9 +69,9 @@ class App extends Component {
                 songs={this.state.songs} 
                 remove={this.removeSong}
                 update={this.updateSong} />
-              <Button icon color="teal" onClick={this.toggleForm}>
+              <FunButton icon onClick={this.toggleForm}>
                 <Icon name={showForm ? 'angle double up' : 'angle double down' } />
-              </Button>
+              </FunButton>
               <Segment basic>
               { showForm ? <SongForm add={this.addSong} /> : null}
               </Segment>
