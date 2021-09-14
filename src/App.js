@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Button, Icon, Segment, } from 'semantic-ui-react';
 import SongForm from './SongForm';
 import Songs from './Songs';
+import styled, { keyframes } from "styled-components";
 
 class App extends Component {
   state = { 
@@ -58,25 +59,43 @@ class App extends Component {
   render() {
     const { showForm } = this.state;
     return (
-      <div style={{marginTop:"35px"}}>
-        <Container>
-          <Header as='h1'>Music List</Header>
-          <Segment raised>
-            <Songs 
-              songs={this.state.songs} 
-              remove={this.removeSong}
-              update={this.updateSong} />
-            <Button icon color="teal" onClick={this.toggleForm}>
-              <Icon name={showForm ? 'angle double up' : 'angle double down' } />
-            </Button>
-            <Segment basic>
-            { showForm ? <SongForm add={this.addSong} /> : null}
+      <Content>
+        <div style={{marginTop:"44px"}}>
+          <Container>
+            <HeaderText>Music List</HeaderText>
+            <Segment raised>
+              <Songs 
+                songs={this.state.songs} 
+                remove={this.removeSong}
+                update={this.updateSong} />
+              <Button icon color="teal" onClick={this.toggleForm}>
+                <Icon name={showForm ? 'angle double up' : 'angle double down' } />
+              </Button>
+              <Segment basic>
+              { showForm ? <SongForm add={this.addSong} /> : null}
+              </Segment>
             </Segment>
-          </Segment>
-      </ Container>
-      </div>
+        </ Container>
+        </div>
+      </Content>
     );
   }
 }
 
+
+const Content = styled.div`
+  border: 1px solid #000;
+  background-image: url("https://previews.123rf.com/images/betelgejze/betelgejze1505/betelgejze150500103/40567331-hand-drawn-abstract-vector-watercolor-stripe-grunge-seamless-pattern-black-and-white-texture-backgro.jpg");
+  height: 1500px;
+  width: 100%;
+`;
+
+const HeaderText = styled.h1`
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+`;
+
+
 export default App;
+
