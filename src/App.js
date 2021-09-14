@@ -3,7 +3,7 @@ import { Container, Header, Button, Icon, Segment, } from 'semantic-ui-react';
 import SongForm from './SongForm';
 import Songs from './Songs';
 
-const App = () => {
+const App = (props) => {
   const [songs, setSongs] = useState([
     { id: 1, name: "Cherry Tree Lane", artist: "Red Brandy", },
     { id: 2, name: "Lovin' Arms", artist: "Grady Shepherd", },
@@ -14,7 +14,7 @@ const App = () => {
     setSongs
   ), []);
 
-  const toggleForm = () => showForm({ showForm: !showForm });
+  const toggleForm = () => setShowForm({ showForm: !showForm });
 
   const getId = () => {
     return Math.floor((1+Math.random()) * 10000);
