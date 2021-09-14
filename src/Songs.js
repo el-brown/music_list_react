@@ -1,13 +1,14 @@
 import React from 'react';
 import { Button, Table } from 'semantic-ui-react';
 import Song from './Song';
+import styled, { keyframes } from "styled-components";
 
 
 const Songs = ( {songs, remove, update} ) => (
-  <Table celled padded color="purple" inverted>
+  <Table as={StyledTable} celled padded inverted>
     <Table.Header>
       <Table.Row>
-        <Table.HeaderCell class="eight wide">Song Name</Table.HeaderCell>
+        <Table.HeaderCell>Song Name</Table.HeaderCell>
         <Table.HeaderCell>Artist</Table.HeaderCell>
         <Table.HeaderCell>Edit / Remove</Table.HeaderCell>
       </Table.Row>
@@ -24,5 +25,9 @@ const Songs = ( {songs, remove, update} ) => (
     </Table.Body>
   </Table>
 );
+
+const StyledTable = styled.table`
+    background-color: #84ab5f !important;
+`
 
 export default Songs;
