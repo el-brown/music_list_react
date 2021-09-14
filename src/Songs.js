@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Table } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 import Song from './Song';
 
 

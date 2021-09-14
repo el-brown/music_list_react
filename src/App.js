@@ -1,82 +1,59 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Header, Button, Icon, Segment, } from 'semantic-ui-react';
 import SongForm from './SongForm';
 import Songs from './Songs';
 
-class App extends Component {
-  state = { 
-    songs: [
-      { id: 1, name: "Cherry Tree Lane", artist: "Red Brandy", },
-      { id: 2, name: "Lovin' Arms", artist: "Grady Shepherd", },
-      { id: 3, name: "Dirt Roads", artist: "Chandra Keen", },
-    ],
-    showForm:false,
-  };
+const App = () => {
+  const [songs, setSongs] = useState([
+    { id: 1, name: "Cherry Tree Lane", artist: "Red Brandy", },
+    { id: 2, name: "Lovin' Arms", artist: "Grady Shepherd", },
+    { id: 3, name: "Dirt Roads", artist: "Chandra Keen", },]);
+  const [showForm, setShowForm] = useState(false);
 
-  async componentDidMount() {
-    console.log("mounted");
-  };
+  useEffect ((
+    setSongs
+  ), []);
 
-  componentDidUpdate() {
-    console.log('updated');
-  };
+  const toggleForm = () => showForm({ showForm: !showForm });
 
-  componentWillUnmount() {
-    console.log('unmounted');
-  };
-
-  toggleForm = () => this.setState({ showForm: !this.state.showForm, })
-
-  getId = () => {
+  const getId = () => {
     return Math.floor((1+Math.random()) * 10000);
   };
 
-  addSong = (songInfo) => {
-    let song = { id: this.getId(), ...songInfo}
-    this.setState({
-      songs: [song, ...this.state.songs],
-    });
+  const addSong = (songInfo) => {
+    let newSong = { id: getId(), ...songInfo};
+    setSongs([newSong, ...songs]);
   };
 
-  updateSong = (song) => {
-    let updateSongs = this.state.songs.map((s) =>
-    s.id === song.id ? song : s
-    );
-    this.setState({
-      songs: updateSongs,
-    });
+  const updateSong = (song) => {
+    let updateSongs = songs.map((s) => (s.id === song.id ? song : s));
+    setSongs(updateSongs);
   };
 
-  removeSong = (id) => {
-    const songs = this.state.songs.filter( (song) => {
-      if (song.id !== id)
-      return song
-    });
-    this.setState({ songs: [...songs], });
+  const removeSong = (id) => {
+    let newArrSongs = songs.filter( (s) => (s.id !== id));
+    setSongs(newArrSongs);
   };
 
-  render() {
-    const { showForm } = this.state;
     return (
       <div style={{marginTop:"35px"}}>
         <Container>
           <Header as='h1'>Music List</Header>
           <Segment raised>
             <Songs 
-              songs={this.state.songs} 
-              remove={this.removeSong}
-              update={this.updateSong} />
-            <Button icon color="teal" onClick={this.toggleForm}>
+              songs={songs} 
+              remove={removeSong}
+              update={updateSong} />
+            <Button icon color="teal" onClick={toggleForm}>
               <Icon name={showForm ? 'angle double up' : 'angle double down' } />
             </Button>
             <Segment basic>
-            { showForm ? <SongForm add={this.addSong} /> : null}
+            { showForm ? <SongForm add={addSong} /> : null}
             </Segment>
           </Segment>
       </ Container>
       </div>
     );
-  }
-}
+};
 
 export default App;
