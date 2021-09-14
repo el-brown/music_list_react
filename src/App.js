@@ -9,8 +9,10 @@ class App extends Component {
   state = { 
     songs: [
       { id: 1, name: "Cherry Tree Lane", artist: "Red Brandy", },
-      { id: 2, name: "Lovin' Arms", artist: "Grady Shepherd", },
+      { id: 2, name: "Loving Arms", artist: "Grady Shepherd", },
       { id: 3, name: "Dirt Roads", artist: "Chandra Keen", },
+      { id: 4, name: "Wishin'", artist: "Haddie Lone", },
+      { id: 5, name: "Last Week", artist: "Theo Plume", },
     ],
     showForm:false,
   };
@@ -95,8 +97,8 @@ const HeaderText = styled.h1`
   color: black;
   font-size: 2rem;
   font-weight: bold;
+  background-color: white;
 `;
-
 
 export default App;
 

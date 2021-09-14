@@ -14,22 +14,5 @@ const bounce = keyframes`
 export const FunButton = styled(Button)`
   background-color: #e8e4af !important;
   animation: ${bounce} 1s infinite;
+
 `
-
-
-// const rotate360 = keyframes`
-// from {
-//   transform:rotate(0deg);
-//   color: red;
-// }
-// to {
-//   transform:rotate(360deg);
-//   color: blue;
-// }
-// `;
-// const Star = styled.div`
-//   fontsize: 30px;
-//   display: inline-block;
-//   color: red;
-//   animation: ${rotate360} 2s linear infinite;
-// `;

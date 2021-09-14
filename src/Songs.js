@@ -1,15 +1,15 @@
 import React from 'react';
-import { Button, Table } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 import Song from './Song';
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 
 const Songs = ( {songs, remove, update} ) => (
   <Table as={StyledTable} celled padded inverted>
     <Table.Header>
       <Table.Row>
-        <Table.HeaderCell>Song Name</Table.HeaderCell>
-        <Table.HeaderCell>Artist</Table.HeaderCell>
+        <BetterHeaderCell size="large">Song Name</BetterHeaderCell>
+        <BetterHeaderCell size="med">Artist</BetterHeaderCell>
         <Table.HeaderCell>Edit / Remove</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
@@ -28,6 +28,20 @@ const Songs = ( {songs, remove, update} ) => (
 
 const StyledTable = styled.table`
     background-color: #84ab5f !important;
+    
 `
+const cellSize = (size) => {
+  switch (size) {
+    case "large":
+      return "25rem";
+    case "med":
+      return "15rem";
+  }
+};
+
+const BetterHeaderCell = styled(Table.HeaderCell)`
+  width: ${(props) => cellSize(props.size)};
+`
+
 
 export default Songs;

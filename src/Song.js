@@ -33,18 +33,46 @@ class Song extends React.Component {
       <Table.Row key={this.props.id}>
       <Table.Cell><strong>{this.props.name}</strong></Table.Cell>
       <Table.Cell><strong>{this.props.artist}</strong></Table.Cell>
-      <Table.Cell>
+      <Table.Cell textAlign="right">
         <Button color="black" icon size="small" onClick={this.toggleForm}>
             <Icon name="edit" />
         </Button>
         <Button icon size="small" onClick={()=> this.props.remove(this.props.id)}>
-            <Icon name="trash alternate outline" />
+            <Icon as={scaredTrash} name="trash alternate outline" />
         </Button>
       </Table.Cell>
     </Table.Row>
     );
   };
 };
+
+
+const wiggle = keyframes`
+10%{
+  transform: rotate(0deg);
+}
+
+20%{
+  transform: rotate(50deg);
+}
+
+30%{
+  transform: rotate(-50deg);
+}
+
+40%{
+  transform: rotate(50deg);
+}
+}
+`
+
+const scaredTrash = styled(Icon)`
+  &:hover {
+  animation: ${wiggle} 1s 
+}
+`
+
+
 
 
 export default Song;
