@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Header, Button, Icon, Segment, Grid, } from 'semantic-ui-react';
+import { Container, Header, Button, Icon, Segment, Card, } from 'semantic-ui-react';
 import SongForm from './SongForm';
 import Songs from './Songs';
 import styled, { keyframes } from "styled-components";
 import { FunButton } from './FunButton';
-import { device, primaryColor } from './query'
+import { device, primaryColor, secondaryColor, terColor } from './query'
 // import { NoteAfter } from './ColorsEtc';
 
 class App extends Component {
@@ -81,10 +81,16 @@ class App extends Component {
               </Segment>
             </Segment>
             <Segment>
-              <HeaderText size="med">Lyrics</HeaderText>
-              <Grid>
-                {/* <Grid.Row stretched>{renderLyrics()}</Grid.Row> */}
-              </Grid>
+              <HeaderText><NoteAfter>Lyrics</NoteAfter></HeaderText>
+              <CardWrapper>
+                {this.state.songs.map((s) => {
+                  return (
+                    <LCard>
+                      <h3>{s.name}</h3>
+                      <p>{s.artist}</p>
+                    </LCard>
+                  )})}
+              </CardWrapper>
             </Segment>
         </ Container>
         </div>
@@ -94,18 +100,16 @@ class App extends Component {
   }
 }
 
-const MyCard = styled.div`
-  margin: 20px;
-  width: 200px;
-`;
+
+const LCard = styled(Card)`
+  height: 10rem;
+  padding: 5px !important;
+`
 
 const NoteAfter = styled.div`
   &:after {
     content: " 🎵"
   }
-  // &:after {
-  //   content: "!"
-  // }
 `;
 
 const Content = styled.div`
@@ -116,7 +120,7 @@ const Content = styled.div`
 `;
 
 const HeaderText = styled.h1`
-  color: black;
+  color: {${terColor}};
   font-size: 2rem;
   font-weight: bold;
   background-color: white;
@@ -125,14 +129,16 @@ const HeaderText = styled.h1`
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  padding: 5px;
+  margin: 5px;
   background-color: ${primaryColor};
   @media ${device.laptop} {
     flex-direction: column;
-    background-color: green;
+    background-color: ${secondaryColor};
   }
   @media ${device.mobileL} {
     flex-direction: column;
-    background-color: purple;
+    background-color: ${terColor};
   }
 `;
 
