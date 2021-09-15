@@ -2,6 +2,7 @@ import React from 'react';
 import { Table } from 'semantic-ui-react';
 import Song from './Song';
 import styled from "styled-components";
+import { primaryColor } from './query';
 
 
 const Songs = ( {songs, remove, update} ) => (
@@ -27,7 +28,7 @@ const Songs = ( {songs, remove, update} ) => (
 );
 
 const StyledTable = styled.table`
-    background-color: #84ab5f !important;
+    background-color: ${primaryColor} !important;
     
 `
 const cellSize = (size) => {

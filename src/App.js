@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Header, Button, Icon, Segment, } from 'semantic-ui-react';
+import { Container, Header, Button, Icon, Segment, Grid, } from 'semantic-ui-react';
 import SongForm from './SongForm';
 import Songs from './Songs';
 import styled, { keyframes } from "styled-components";
 import { FunButton } from './FunButton';
+import { device, primaryColor } from './query'
+// import { NoteAfter } from './ColorsEtc';
 
 class App extends Component {
   state = { 
@@ -65,7 +67,7 @@ class App extends Component {
       <Content>
         <div style={{marginTop:"60px"}}>
           <Container>
-            <HeaderText>Music List</HeaderText>
+            <HeaderText><NoteAfter>Music List</NoteAfter></HeaderText>
             <Segment raised>
               <Songs 
                 songs={this.state.songs} 
@@ -78,13 +80,33 @@ class App extends Component {
               { showForm ? <SongForm add={this.addSong} /> : null}
               </Segment>
             </Segment>
+            <Segment>
+              <HeaderText size="med">Lyrics</HeaderText>
+              <Grid>
+                {/* <Grid.Row stretched>{renderLyrics()}</Grid.Row> */}
+              </Grid>
+            </Segment>
         </ Container>
         </div>
+
       </Content>
     );
   }
 }
 
+const MyCard = styled.div`
+  margin: 20px;
+  width: 200px;
+`;
+
+const NoteAfter = styled.div`
+  &:after {
+    content: " 🎵"
+  }
+  // &:after {
+  //   content: "!"
+  // }
+`;
 
 const Content = styled.div`
   border: 1px solid #000;
@@ -98,6 +120,20 @@ const HeaderText = styled.h1`
   font-size: 2rem;
   font-weight: bold;
   background-color: white;
+`;
+
+const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  background-color: ${primaryColor};
+  @media ${device.laptop} {
+    flex-direction: column;
+    background-color: green;
+  }
+  @media ${device.mobileL} {
+    flex-direction: column;
+    background-color: purple;
+  }
 `;
 
 export default App;
