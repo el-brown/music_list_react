@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { Button, } from 'semantic-ui-react';
+import { secondaryColor } from './query'
 
 
 
@@ -12,7 +13,7 @@ const bounce = keyframes`
 `
 
 export const FunButton = styled(Button)`
-  background-color: #e8e4af !important;
+  background-color: ${secondaryColor} !important;
   animation: ${bounce} 1s infinite;
 
 `

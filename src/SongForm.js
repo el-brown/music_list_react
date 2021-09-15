@@ -1,6 +1,7 @@
 import React from 'react';
 import {Form , Button } from 'semantic-ui-react';
 import styled from "styled-components";
+import { terColor } from './query';
 
 class SongForm extends React.Component  {
   state = { 
@@ -46,7 +47,7 @@ class SongForm extends React.Component  {
               value = {this.state.artist}
               onChange = {this.handleChange}/>
           </Form.Group>
-          <Button color="black" size="small">{this.props.id ? "Update" : "Add"}</Button>
+          <Button color={terColor} size="small">{this.props.id ? "Update" : "Add"}</Button>
         </Form>
       </div>
   )

@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Table, Icon } from 'semantic-ui-react';
 import SongForm from './SongForm';
 import styled, { keyframes } from "styled-components";
+import { terColor } from './query';
 
 class Song extends React.Component {
   state = { showForm: false };
@@ -34,7 +35,7 @@ class Song extends React.Component {
       <Table.Cell><strong>{this.props.name}</strong></Table.Cell>
       <Table.Cell><strong>{this.props.artist}</strong></Table.Cell>
       <Table.Cell textAlign="right">
-        <Button color="black" icon size="small" onClick={this.toggleForm}>
+        <Button color={terColor} icon size="small" onClick={this.toggleForm}>
             <Icon name="edit" />
         </Button>
         <Button icon size="small" onClick={()=> this.props.remove(this.props.id)}>

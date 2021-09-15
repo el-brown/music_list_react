@@ -20,4 +20,7 @@ export const device = {
 };
 
 export const primaryColor = "#84ab5f";
+export const secondaryColor = "#e8e4af";
+export const terColor = "black";
+
 
