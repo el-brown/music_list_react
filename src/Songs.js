@@ -33,9 +33,9 @@ const StyledTable = styled.table`
 const cellSize = (size) => {
   switch (size) {
     case "large":
-      return "25rem";
+      return "50%";
     case "med":
-      return "15rem";
+      return "40%";
   }
 };
 
